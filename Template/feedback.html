@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block class %}class="sub_page"{% endblock class %}
+{% block feedback_status %}active{% endblock feedback_status %}
+
+<!-- client section -->
+{% block main %}
+ <!-- book section -->
+ <section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Feedback Status Form
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form action="{% url "Feedback" %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div>
+                <input type="text" name="name" class="form-control" placeholder="Your Name" />
+              </div>
+              <div>
+                <textarea type="text" name="des" class="form-control" rows="5" placeholder="Please put your experience"></textarea>
+              </div>
+              <div>
+                <select class="form-control nice-select wide" name="rate">
+                  <option value="" disabled selected>
+                    Please Give Us Rating
+                  </option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div>
+                <label for="image">Upload an Image (optional):</label>
+                <input type="file" class="form-control-file" id="image" name="image" accept="media/" name="img">
+              </div>
+              
+              <div class="btn_box">
+                <button type="submit">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end book section -->
+{% endblock main %}
+<!-- end client section -->
